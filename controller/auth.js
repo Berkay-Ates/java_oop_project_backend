@@ -10,9 +10,9 @@ const register = async (req, res) => {
 
 const login = async (req, res) => {
     console.log(req.body);
-    const { name, password, userType } = req.body  //* auth middleware'i tarafından set edilmişti zaten 
+    const { name, password } = req.body  //* auth middleware'i tarafından set edilmişti zaten 
 
-    if (!name || !password || !userType) {
+    if (!name || !password) {
         throw new BadRequest("name and password have to be provided")
     }
     const user = await User.findOne({ name })
