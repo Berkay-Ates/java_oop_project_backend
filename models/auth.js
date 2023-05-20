@@ -9,14 +9,14 @@ const UserSchema = new mongoose.Schema({
     },
     password: {
         type: String,
-        required: [true, 'Please provide an valid e mail'],
+        required: [true, 'Please provide an valid password'],
         minlength: 3,
     },
     userType: {
         type: String,
         default: "user",
         enum: {
-            values: ["user", "admin"],
+            values: ["student", "admin"],
             message: '{VALUE} is not supported',
         }
     },
