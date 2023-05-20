@@ -23,7 +23,7 @@ const login = async (req, res) => {
     if (password != dbPassword) {
         throw new Unauthenticated("invalid credentials")
     }
-    res.status(StatusCodes.OK).json({ ...{ name: user.name, password: password, userType: userType } })
+    res.status(StatusCodes.OK).json({ ...{ name: user.name, password: password, userType: user.userType } })
 }
 
 module.exports = {
