@@ -16,7 +16,7 @@ const UserSchema = new mongoose.Schema({
         type: String,
         default: "user",
         enum: {
-            values: ["student", "admin"],
+            values: ["student", "parent"],
             message: '{VALUE} is not supported',
         }
     },
