@@ -1,6 +1,6 @@
 const User = require("../models/auth")
 const { StatusCodes } = require('http-status-codes')
-const { BadRequest, Unauthenticated } = require("../errors");
+const { BadRequest } = require("../errors");
 
 const register = async (req, res) => {
     const user = await User.create({ ...req.body });
@@ -9,7 +9,7 @@ const register = async (req, res) => {
 }
 
 const login = async (req, res) => {
-    console.log(req.body);
+
     const { name, password } = req.body  //* auth middleware'i tarafından set edilmişti zaten 
 
     if (!name || !password) {
@@ -17,11 +17,11 @@ const login = async (req, res) => {
     }
     const user = await User.findOne({ name })
     if (!user) {
-        throw new Unauthenticated("invalid credantials plase provide exist user info")
+        throw new BadRequest("invalid credantials plase provide exist user info")
     }
     const dbPassword = user.password;
     if (password != dbPassword) {
-        throw new Unauthenticated("invalid credentials")
+        throw new BadRequest("invalid credentials")
     }
     res.status(StatusCodes.OK).json({ ...{ name: user.name, password: password, userType: user.userType } })
 }

@@ -10,6 +10,7 @@ const uri = process.env.MONGO_URI
 
 //*routers
 const authRouter = require("./routes/auth")
+const questionRouter = require("./routes/questions")
 
 //* error handler 
 const notFoundMiddleware = require("./middleware/not_found")
@@ -21,6 +22,7 @@ app.use(express.urlencoded({ extended: true }))
 
 //* activate routers 
 app.use("/api/v1/auth", authRouter);
+app.use("/api/v1/questions", questionRouter);
 
 //* middlewares
 app.use(notFoundMiddleware)
