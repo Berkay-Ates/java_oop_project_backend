@@ -18,7 +18,7 @@ const saveQuestion = async (req, res) => {
 
 const getQuestions = async (req, res) => {
     const questions = await Question.find({});
-    res.status(StatusCodes.CREATED).json({ questions: questions })
+    res.status(StatusCodes.OK).json({ questions: questions })
 }
 
 module.exports = { saveQuestion, getQuestions };
